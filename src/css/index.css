@@ -1,6 +1,8 @@
 #swiper {
   width: 800px;
   height: 100px;
-  background-color: hotpink;
   color: '#000';
+}
+body {
+  background: url("../pic/Snipaste_2022-06-19_23-23-08.png") no-repeat center;
 }

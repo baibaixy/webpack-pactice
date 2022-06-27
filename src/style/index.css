@@ -1,7 +1,11 @@
-#swiper { 
-    width: 800px;
-    height: 100px; 
-    background-color: hotpink; 
-    color: '#000'
-  }
-  
+#swiper {
+  width: 800px;
+  height: 100px;
+  /* background-color: hotpink;  */
+  color: '#000';
+}
+
+/* body {
+  background: url('../pic/v2-640f2d0ba0bce1b07f7a0dff5f874909_r.jpg') no-repeat
+    center;
+} */

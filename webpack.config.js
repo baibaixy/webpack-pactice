@@ -50,6 +50,56 @@ module.exports = {
         // style-loader 在把css代码插入到 dom中
         use: ['style-loader', 'css-loader', 'less-loader'],
       },
+      //   {
+      //     test: /\.(png|jpg|gif)$/i, // 匹配的图片
+      //     // use: ['url-loader'],
+      //     // url-loader 转换based64 直接插入
+      //     // 不好的地方？？？based64 太大 如何解决
+
+      //     // 对图片的大小进行限制
+      //     // 配置limit, 超过 8 * 1024, 不转, file-loader复制, 随机名, 输出文件
+
+      //     // file-loader 直接复制图片 到dist目录下， 并且改改对应图片的src
+      //     use: [
+      //       {
+      //         // 对当前的loader 进行配置
+      //         loader: 'url-loader',
+      //         options: {
+      //           limit: 8192, // 限制大小
+      //         },
+      //       },
+      //     ],
+      //   },
+      {
+        // 图片文件的配置(仅适用于webpack5版本)
+        test: /\.(png|jpg|gif|jpeg)$/i,
+        type: 'asset', // 在导出一个 data URI 和发送一个单独的文件之间自动选择
+        // 如果你设置的是asset模式
+        // 以8KB大小区分图片文件
+        // 小于8KB的, 把图片文件转base64, 打包进js中
+        // 大于8KB的, 直接把图片文件输出到dist下
+
+        // type: 'asset/resource' // 发送一个单独的文件并导出 URL
+        // type: 'asset/inline' // 导出一个资源的 data URI
+      },
+      {
+        // webpack5默认内部不认识这些文件, 所以当做静态资源直接输出即可
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'font-[name].[hash:6][ext]',
+        },
+      },
+      {
+        test: /\.js$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'], // 预设:转码规则(用bable开发环境本来预设的)
+          },
+        },
+      },
     ],
   },
 };
