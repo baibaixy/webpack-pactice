@@ -5,6 +5,7 @@ import './style/index.css';
 import './style/index.less';
 
 import './assets/fonts/iconfont.css';
+import './app.vue'
 // $('#swiper').css('background-color', 'red');
 
 // index.js
